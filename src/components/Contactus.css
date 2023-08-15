@@ -1,0 +1,30 @@
+#contact-body {
+    height: calc(100vh - 150px);
+}
+
+#contact-container {
+    width: 80vw;
+    display: flex;
+
+}
+
+.info-container{
+    width: 50%;
+    text-align: center;
+}
+
+#basic-info{
+    display: flex;
+    flex-direction: column;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.form-inputs{
+    vertical-align:text-top;
+}

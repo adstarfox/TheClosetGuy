@@ -1,0 +1,13 @@
+
+#home-title{
+    height:1rem;
+}
+
+.home-containers {
+    height: 18rem;
+    width: 90vw;
+    background-color: rgba(0, 0, 255, 0.387);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
