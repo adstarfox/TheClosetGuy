@@ -15,9 +15,11 @@ app.use(cors())
 Admin.hasMany(Request)
 Request.belongsTo(Admin)
 
-const { addRequest } = require('./controller')
+const { addRequest, addAdmin } = require('./controller')
 
+app.post('/AddAdmin', addAdmin)
 app.post('/quote', addRequest)
+
 
 db.sync()
     .then(() => {
