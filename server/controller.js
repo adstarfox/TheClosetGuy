@@ -1,3 +1,4 @@
+const user = require('../../../week_2/movieRater/server/Controller/models/user')
 const { Admin } = require('./models/admins')
 const { Request } = require('./models/requests')
 const bcrypt = require('bcrypt')
@@ -26,6 +27,38 @@ module.exports = {
             console.log('Error in addRequest')
             console.log(error)
             res.status(400).send('Please check your info')
+        }
+    },
+    adminLogin: async (req, res) => {
+        const { username, password } = req.body
+        let foundUser = await Admin.findOne({where: {username:username}})
+        // console.log(foundUser)
+
+        if(foundUser === null){
+            return res.status(401).send('Invalid username')
+        }
+
+        try {
+            if (await bcrypt.compare(password, foundUser.hashedPass)){
+                console.log('Admin Found')
+                res.sendStatus(200)
+            }else {
+                res.status(401).send('Invalid Password')
+            }
+        }catch (error){
+            console.log("Error in adminLogin")
+            console.log(error)
+            res.status(401)
+        }
+    },
+    getRequests: async (req, res) => {
+        try{
+            const data = await Request.findAll()
+            res.status(200).send(data)
+        }catch (error) {
+            console.log('Error in getRequests')
+            console.log(error)
+            res.sendStatus(404)
         }
     }
 }
