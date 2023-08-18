@@ -6,6 +6,7 @@ const PORT = process.env.PORT
 const { db } = require('./database')
 const { Admin } = require('./models/admins')
 const { Request } = require('./models/requests')
+const { isAuthenticated } = require('./Authentication/isAuthenticated')
 
 const app = express()
 
@@ -21,7 +22,7 @@ app.post('/AddAdmin', addAdmin)
 app.post('/quote', addRequest)
 app.post('/login', adminLogin)
 
-app.get('/requests', getRequests)
+app.get('/requests', isAuthenticated, getRequests)
 
 
 db.sync()

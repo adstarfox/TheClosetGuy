@@ -2,6 +2,22 @@ const user = require('../../../week_2/movieRater/server/Controller/models/user')
 const { Admin } = require('./models/admins')
 const { Request } = require('./models/requests')
 const bcrypt = require('bcrypt')
+const SECRET = process.env.SECRET
+const jwt = require('jsonwebtoken')
+
+
+const generateToken = (info) => {
+    return jwt.sign(
+        {
+            username: info.username,
+            password: info.password
+        },
+        SECRET,
+        {
+            expiresIn: '24h'
+        }
+    )
+}
 
 
 module.exports = {
@@ -40,8 +56,9 @@ module.exports = {
 
         try {
             if (await bcrypt.compare(password, foundUser.hashedPass)){
-                console.log('Admin Found')
-                res.sendStatus(200)
+                let token = generateToken(req.body)
+                // console.log('Token:', token)
+                res.status(200).send(token)
             }else {
                 res.status(401).send('Invalid Password')
             }
