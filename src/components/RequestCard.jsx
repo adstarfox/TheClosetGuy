@@ -1,10 +1,15 @@
+import axios from 'axios'
+
+
 const RequestCard = ({ request }) => {
     // console.log(request)
-    let token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('adminToken')
 
     const clickHandler = async () => {
         try {
-            // axios.
+            const parsedToken = JSON.parse(atob(token.split('.')[1]));
+            axios.put('http://localhost:5050/contacted', parsedToken)
+            
         } catch (error) {
             console.log(error)
         }

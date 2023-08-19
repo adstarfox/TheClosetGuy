@@ -48,7 +48,11 @@ module.exports = {
     adminLogin: async (req, res) => {
         const { username, password } = req.body
         let foundUser = await Admin.findOne({where: {username:username}})
-        // console.log(foundUser)
+        // console.log(foundUser.hashedPass)
+        let newBody = {
+            username: username,
+            password: foundUser.hashedPass
+        }
 
         if(foundUser === null){
             return res.status(401).send('Invalid username')
@@ -56,7 +60,7 @@ module.exports = {
 
         try {
             if (await bcrypt.compare(password, foundUser.hashedPass)){
-                let token = generateToken(req.body)
+                let token = generateToken(newBody)
                 // console.log('Token:', token)
                 res.status(200).send(token)
             }else {
@@ -76,6 +80,15 @@ module.exports = {
             console.log('Error in getRequests')
             console.log(error)
             res.sendStatus(404)
+        }
+    },
+    markContacted: async (req, res) => {
+        try {
+            console.log(req.body)
+        } catch (error) {
+            console.log('Error in markContacted')
+            console.log(error)
+            res.sendStatus(400)
         }
     }
 }
