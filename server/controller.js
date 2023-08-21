@@ -74,7 +74,7 @@ module.exports = {
     },
     getRequests: async (req, res) => {
         try{
-            const data = await Request.findAll()
+            const data = await Request.findAll({include: Admin})
             res.status(200).send(data)
         }catch (error) {
             console.log('Error in getRequests')
@@ -91,8 +91,7 @@ module.exports = {
             await Request.update({adminId:adminId.id}, {
                 where: {id: requestId}
             })
-            const data = await Request.findAll()
-            res.status(200).send(data)
+            res.sendStatus(200)
         } catch (error) {
             console.log('Error in markContacted')
             console.log(error)

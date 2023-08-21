@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 const AdminPage = () => {
     const navigate = useNavigate()
     const [requests, setRequests] = useState([])
-    const [deleted, setDeleted] = useState(false)
     const token = localStorage.getItem('adminToken')
 
     const reloadPage = () => {
@@ -27,10 +26,10 @@ const AdminPage = () => {
         }
     }
     
-    
     let mapped = requests.map((request, index) => {
+        const formattedDate = new Date(request.createdAt).toLocaleDateString('en-US');
         return(
-            <RequestCard key={index} request={request} setDeleted={setDeleted} deleted={deleted} reloadPage={reloadPage} />
+            <RequestCard key={index} request={request} reloadPage={reloadPage} date={formattedDate} />
             )
         })
         

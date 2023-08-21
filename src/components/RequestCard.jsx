@@ -1,9 +1,11 @@
 import axios from 'axios'
+import { useState } from 'react'
 
 
-const RequestCard = ({ request, reloadPage }) => {
+const RequestCard = ({ request, reloadPage, date }) => {
     // console.log(request)
     const token = localStorage.getItem('adminToken')
+
 
     const contactHandler = async (id) => {
         try {
@@ -42,6 +44,7 @@ const RequestCard = ({ request, reloadPage }) => {
         <div>
             <div>
                 <h1>{request.name}</h1>
+                <h4>{date}</h4>
                 <p onClick={() => {
                     deleteHandler(request.id)
                     reloadPage()    
@@ -50,7 +53,7 @@ const RequestCard = ({ request, reloadPage }) => {
             <h3>{request.email}</h3>
             <h3>{request.phone}</h3>
             <p>{request.notes}</p>
-            {request.adminId ? <p>hi</p> : <button onClick={() => {contactHandler(request.id), reloadPage()}}>Contacted?</button>}
+            {request.adminId ? <p>{request.admin.username}</p> : <button onClick={() => {contactHandler(request.id), reloadPage()}}>Contacted?</button>}
         </div>
     )
 }
