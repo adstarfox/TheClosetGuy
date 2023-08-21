@@ -6,8 +6,13 @@ import { useNavigate } from 'react-router-dom'
 const AdminPage = () => {
     const navigate = useNavigate()
     const [requests, setRequests] = useState([])
-    let token = localStorage.getItem('adminToken')
+    const [deleted, setDeleted] = useState(false)
+    const token = localStorage.getItem('adminToken')
 
+    const reloadPage = () => {
+        location.reload()
+    }
+    
     const requestDB = async () => {
         try {
             let req = await axios.get('http://localhost:5050/requests', {
@@ -21,18 +26,18 @@ const AdminPage = () => {
             console.log(err)
         }
     }
-
+    
+    
+    let mapped = requests.map((request, index) => {
+        return(
+            <RequestCard key={index} request={request} setDeleted={setDeleted} deleted={deleted} reloadPage={reloadPage} />
+            )
+        })
+        
     useEffect(() => {
         requestDB()
     },[])
-
-
-    let mapped = requests.map((request, index) => {
-        return(
-            <RequestCard key={index} request={request} />
-        )
-    })
-
+        
     return (
         token ? <div>{mapped}</div> : 
         <div>

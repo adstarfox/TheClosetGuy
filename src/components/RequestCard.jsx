@@ -1,27 +1,56 @@
 import axios from 'axios'
 
 
-const RequestCard = ({ request }) => {
+const RequestCard = ({ request, reloadPage }) => {
     // console.log(request)
     const token = localStorage.getItem('adminToken')
 
-    const clickHandler = async () => {
+    const contactHandler = async (id) => {
         try {
             const parsedToken = JSON.parse(atob(token.split('.')[1]));
-            axios.put('http://localhost:5050/contacted', parsedToken)
+
+            let body = {
+                username: parsedToken.username,
+                requestId: id
+            }
+            
+            await axios.put('http://localhost:5050/contacted', body, {
+                headers: {
+                    authorization: token
+                }
+            })
             
         } catch (error) {
             console.log(error)
         }
     }
 
+    const deleteHandler = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5050/admin-page/${id}`, {
+                headers: {
+                    authorization: token
+                }
+            })
+        } catch (error) {
+            console.log('Error in deleteHandler')
+            console.log(error)
+        }
+    }
+
     return(
         <div>
-            <h1>{request.name}</h1>
+            <div>
+                <h1>{request.name}</h1>
+                <p onClick={() => {
+                    deleteHandler(request.id)
+                    reloadPage()    
+                }}>X</p>
+            </div>
             <h3>{request.email}</h3>
             <h3>{request.phone}</h3>
             <p>{request.notes}</p>
-            <button onClick={clickHandler}>Contacted?</button>
+            {request.adminId ? <p>hi</p> : <button onClick={() => {contactHandler(request.id), reloadPage()}}>Contacted?</button>}
         </div>
     )
 }

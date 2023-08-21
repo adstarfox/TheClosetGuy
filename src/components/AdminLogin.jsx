@@ -13,7 +13,7 @@ const AdminLogin = () => {
         // console.log(values)
         axios.post('http://localhost:5050/login', values)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 if(res.statusText === 'OK'){
                     localStorage.setItem('adminToken',res.data)
                     navigate('/admin-page')

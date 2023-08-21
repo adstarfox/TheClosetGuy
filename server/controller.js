@@ -83,10 +83,31 @@ module.exports = {
         }
     },
     markContacted: async (req, res) => {
+        const {username, requestId} = req.body
         try {
-            console.log(req.body)
+            const adminId = await Admin.findOne({
+                where: {username:username}
+            })
+            await Request.update({adminId:adminId.id}, {
+                where: {id: requestId}
+            })
+            const data = await Request.findAll()
+            res.status(200).send(data)
         } catch (error) {
             console.log('Error in markContacted')
+            console.log(error)
+            res.sendStatus(400)
+        }
+    },
+    deleteRequest: async (req, res) => {
+
+        try {
+            // console.log(+req.params.id)
+            await Request.destroy({
+                where: {id: req.params.id}
+            })
+        } catch (error) {
+            console.log('Error in deleteRequest')
             console.log(error)
             res.sendStatus(400)
         }

@@ -16,7 +16,7 @@ app.use(cors())
 Admin.hasMany(Request)
 Request.belongsTo(Admin)
 
-const { addRequest, addAdmin, adminLogin, getRequests, markContacted } = require('./controller')
+const { addRequest, addAdmin, adminLogin, getRequests, markContacted, deleteRequest } = require('./controller')
 
 app.post('/AddAdmin', addAdmin)
 app.post('/quote', addRequest)
@@ -24,8 +24,9 @@ app.post('/login', adminLogin)
 
 app.get('/requests', isAuthenticated, getRequests)
 
-app.put('/contacted', markContacted)
+app.put('/contacted', isAuthenticated, markContacted)
 
+app.delete('/admin-page/:id', isAuthenticated, deleteRequest)
 
 db.sync()
     .then(() => {

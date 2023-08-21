@@ -4,7 +4,7 @@ import hanger from '../assets/grant-final-logo1.png'
 
 const Aboutus = () => {
     return (
-        <body className="universal-body">
+        <div className="universal-body">
             <h1>About us</h1>
             <p id="about-us-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo soluta voluptatibus, ad reiciendis impedit qui rem laboriosam mollitia id pariatur eius. Eius ut non amet ipsam beatae dolore atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, vero quas, odit distinctio vitae harum laboriosam excepturi nulla dolore est repudiandae ipsa ea quidem saepe praesentium maiores nemo, blanditiis quod?
             Debitis accusamus tempore ut? Cupiditate quod id consequatur assumenda magni, soluta ea reprehenderit aspernatur illo modi tempore, qui unde ipsa possimus facilis doloremque adipisci odit repellat officia. Pariatur, excepturi quod.
@@ -30,7 +30,7 @@ const Aboutus = () => {
                 <img src={hanger} alt="Example pictures" className='example-pics'/>
                 <img src={hanger} alt="Example pictures" className='example-pics'/>
             </span>
-        </body>
+        </div>
     )
 }
 

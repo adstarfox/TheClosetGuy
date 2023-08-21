@@ -3,7 +3,7 @@ import './Home.css'
 
 const Home = () => {
     return (
-        <body className='universal-body'>
+        <div className='universal-body'>
             <h1 id='home-title'>Home</h1>
             <div id="first-container" className="home-containers">
                 <p>We help people create the closet layout of their dreams</p>
@@ -17,7 +17,7 @@ const Home = () => {
                 <p>We would love to help you</p>
                 <img src="" alt="closet example 3" />
             </div>
-        </body>
+        </div>
     )
 }
 

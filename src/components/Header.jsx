@@ -10,7 +10,7 @@ const Header = () => {
     let token = localStorage.getItem('adminToken')
 
     const logoutHandler = () => {
-        localStorage.clear()
+        localStorage.clear('adminToken')
         navigate('/admin-login')
     }
     return(
