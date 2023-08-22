@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const AdminPage = () => {
     const navigate = useNavigate()
     const [requests, setRequests] = useState([])
+    const [search, setSearch] = useState('')
+    const [checked, setChecked] = useState(false)
     const token = localStorage.getItem('adminToken')
 
     const reloadPage = () => {
@@ -26,7 +28,14 @@ const AdminPage = () => {
         }
     }
     
-    let mapped = requests.map((request, index) => {
+    let filtered = requests.filter((request) => {
+        if (checked && request.name.toLowerCase().includes(search.toLowerCase())){
+            if(!request.adminId)
+            return request
+        } else {
+            return request.name.toLowerCase().includes(search.toLowerCase())}
+        })
+        .map((request, index) => {
         const formattedDate = new Date(request.createdAt).toLocaleDateString('en-US');
         return(
             <RequestCard key={index} request={request} reloadPage={reloadPage} date={formattedDate} />
@@ -38,7 +47,13 @@ const AdminPage = () => {
     },[])
         
     return (
-        token ? <div>{mapped}</div> : 
+        token ? 
+        <div>
+            <input onChange={e => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search Name' />
+            <label>Contacted<input type="checkbox" onChange={(e) => {setChecked(!checked)}}/></label>
+            {filtered}
+        </div> 
+        : 
         <div>
             <p>Thanks for coming to our webpage. You are not authorized to be here. Please click the button to go to our Home page</p>
             <button onClick={() => navigate('/')}>Home</button>

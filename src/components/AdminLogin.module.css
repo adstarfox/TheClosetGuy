@@ -1,0 +1,40 @@
+.formBody {
+    height: calc(100vh - 150px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    height: 40vh;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form>button {
+    height: 15%;
+    width: 50%;
+    font-size: x-large;
+}
+
+.input {
+    height: 30%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input>h1 {
+    font-size: x-large;
+}
+
+.input>input {
+    height: 50%;
+    width: 60%;
+    font-size: x-large;
+}

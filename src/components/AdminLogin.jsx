@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import styles from './AdminLogin.module.css'
 
 const AdminLogin = () => {
     const navigate = useNavigate()
@@ -26,29 +27,32 @@ const AdminLogin = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({ values, handleChange, handleSubmit}) => {
                 return (
-                    <form>
-                        <label>
-                            Username
-                            <input 
-                            type="text"
-                            placeholder='Example@email.com'
-                            name='username'
-                            value={values.name}
-                            onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Password
-                            <input 
-                            type="text"
-                            placeholder='Password'
-                            name='password'
-                            value={values.password}
-                            onChange={handleChange}
-                            />
-                        </label>
-                        <button type="button" onClick={handleSubmit}>Let me in</button>
-                    </form>
+                    <div className={styles.formBody}>
+                        <form className={styles.form}>
+                            <div className={styles.input}>
+                                <h1>Username:</h1>
+                                <input 
+                                maxLength={20}
+                                type="text"
+                                placeholder='TheClosetGuy1'
+                                name='username'
+                                value={values.name}
+                                onChange={handleChange}
+                                />
+                            </div>
+                            <div className={styles.input}>
+                                <h1>Password:</h1>
+                                <input 
+                                type="text"
+                                placeholder='CoolClosets2023'
+                                name='password'
+                                value={values.password}
+                                onChange={handleChange}
+                                />
+                            </div>
+                            <button type="button" onClick={handleSubmit}>Login</button>
+                        </form>
+                    </div>
                 )
             }}
         </Formik>

@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 const RequestCard = ({ request, reloadPage, date }) => {
     // console.log(request)
+    const [deleted, setDeleted] = useState(false)
     const token = localStorage.getItem('adminToken')
 
 
@@ -45,10 +46,18 @@ const RequestCard = ({ request, reloadPage, date }) => {
             <div>
                 <h1>{request.name}</h1>
                 <h4>{date}</h4>
-                <p onClick={() => {
-                    deleteHandler(request.id)
-                    reloadPage()    
-                }}>X</p>
+                {
+                    !deleted ? <p onClick={() => {setDeleted(true)}}>X</p>
+                    :
+                    <div>
+                        <p>Delete?</p>
+                        <button onClick={() => {
+                            deleteHandler(request.id)
+                            reloadPage()    
+                        }}>Yes</button>
+                        <button onClick={() => {setDeleted(false)}}>No</button>
+                    </div>
+                }
             </div>
             <h3>{request.email}</h3>
             <h3>{request.phone}</h3>

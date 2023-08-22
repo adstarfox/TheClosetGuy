@@ -46,35 +46,44 @@ module.exports = {
         }
     },
     adminLogin: async (req, res) => {
-        const { username, password } = req.body
-        let foundUser = await Admin.findOne({where: {username:username}})
-        // console.log(foundUser.hashedPass)
-        let newBody = {
-            username: username,
-            password: foundUser.hashedPass
-        }
+        console.log(req.body)
 
-        if(foundUser === null){
-            return res.status(401).send('Invalid username')
-        }
+        // const { username, password } = req.body
 
-        try {
-            if (await bcrypt.compare(password, foundUser.hashedPass)){
-                let token = generateToken(newBody)
-                // console.log('Token:', token)
-                res.status(200).send(token)
-            }else {
-                res.status(401).send('Invalid Password')
-            }
-        }catch (error){
-            console.log("Error in adminLogin")
-            console.log(error)
-            res.status(401)
-        }
+        // let foundUser = await Admin.findOne({where: {username:username}})
+        // // console.log(foundUser.hashedPass)
+        // let newBody = {
+        //     username: username,
+        //     password: foundUser.hashedPass
+        // }
+        
+        // if(foundUser === null){
+        //     return res.status(401).send('Invalid username')
+        // }
+        
+        // try {
+        //     if (await bcrypt.compare(password, foundUser.hashedPass)){
+        //         let token = generateToken(newBody)
+        //         // console.log('Token:', token)
+        //         res.status(200).send(token)
+        //     }else {
+        //         res.status(401).send('Invalid Password')
+        //     }
+        // }catch (error){
+        //     console.log("Error in adminLogin")
+        //     console.log(error)
+        //     res.status(401)
+        // }
     },
     getRequests: async (req, res) => {
         try{
-            const data = await Request.findAll({include: Admin})
+            const data = await Request.findAll({
+                include: Admin,
+                order: [
+                    ['createdAt',
+                    'DESC']
+                ]
+            })
             res.status(200).send(data)
         }catch (error) {
             console.log('Error in getRequests')
@@ -99,12 +108,12 @@ module.exports = {
         }
     },
     deleteRequest: async (req, res) => {
-
         try {
             // console.log(+req.params.id)
             await Request.destroy({
                 where: {id: req.params.id}
             })
+            res.sendStatus(200)
         } catch (error) {
             console.log('Error in deleteRequest')
             console.log(error)
