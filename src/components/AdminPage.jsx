@@ -2,6 +2,7 @@ import RequestCard from './RequestCard'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './AdminPage.module.css'
 
 const AdminPage = () => {
     const navigate = useNavigate()

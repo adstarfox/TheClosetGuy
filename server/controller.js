@@ -48,32 +48,33 @@ module.exports = {
     adminLogin: async (req, res) => {
         console.log(req.body)
 
-        // const { username, password } = req.body
+        const { username, password } = req.body
 
-        // let foundUser = await Admin.findOne({where: {username:username}})
-        // // console.log(foundUser.hashedPass)
-        // let newBody = {
-        //     username: username,
-        //     password: foundUser.hashedPass
-        // }
+        let foundUser = await Admin.findOne({where: {username:username}})
+
+        if(foundUser === null){
+            return res.status(401).send('Invalid username')
+        }
+        // console.log(foundUser.hashedPass)
+        let newBody = {
+            username: username,
+            password: foundUser.hashedPass
+        }
         
-        // if(foundUser === null){
-        //     return res.status(401).send('Invalid username')
-        // }
         
-        // try {
-        //     if (await bcrypt.compare(password, foundUser.hashedPass)){
-        //         let token = generateToken(newBody)
-        //         // console.log('Token:', token)
-        //         res.status(200).send(token)
-        //     }else {
-        //         res.status(401).send('Invalid Password')
-        //     }
-        // }catch (error){
-        //     console.log("Error in adminLogin")
-        //     console.log(error)
-        //     res.status(401)
-        // }
+        try {
+            if (await bcrypt.compare(password, foundUser.hashedPass)){
+                let token = generateToken(newBody)
+                // console.log('Token:', token)
+                res.status(200).send(token)
+            }else {
+                res.status(401).send('Invalid Password')
+            }
+        }catch (error){
+            console.log("Error in adminLogin")
+            console.log(error)
+            res.status(500)
+        }
     },
     getRequests: async (req, res) => {
         try{

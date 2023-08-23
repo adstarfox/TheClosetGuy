@@ -57,7 +57,7 @@ const Contactus = () => {
                 <label className="form-inputs">
                   Phone Number
                   <input
-                    type="text"
+                    type="number"
                     placeholder="(###) ###-####"
                     name="phone"
                     value={values.phone}
