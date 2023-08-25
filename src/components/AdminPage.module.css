@@ -1,0 +1,48 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+:root {
+    --primary-light-hsl: 200, 100%, 91%;
+    --primary-hsl: 200, 100%, 50%;
+    --primary-dark-hsl: 200, 100%, 6%;
+    --success-hsl: 100, 60%, 50%;
+    --error-hsl: 0, 60%, 50%;
+}
+
+.pageBody{
+    height: calc(100vh - 150px);
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background-image: url('../assets/mtnPic.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.searchBox{
+    height: 50px;
+    display: flex;
+    gap: 3rem;
+    margin-top: 1rem;
+}
+
+.requestContainer {
+    height: 70vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.requestContainer::-webkit-scrollbar{
+    display: none;
+}

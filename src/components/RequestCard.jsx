@@ -1,8 +1,11 @@
 import axios from 'axios'
 import { useState } from 'react'
+import styles from './RequestCard.module.css'
+import { MdDelete } from 'react-icons/md'
 
 
-const RequestCard = ({ request, reloadPage, date }) => {
+
+const RequestCard = ({ request, reloadPage, createdDate, contactedDate }) => {
     // console.log(request)
     const [deleted, setDeleted] = useState(false)
     const token = localStorage.getItem('adminToken')
@@ -41,13 +44,18 @@ const RequestCard = ({ request, reloadPage, date }) => {
         }
     }
 
+    let name = ''
+    if(request.name.length){
+        name = request.name.split(' ')
+    }
+    
+    console.log(name)
     return(
-        <div>
-            <div>
-                <h1>{request.name}</h1>
-                <h4>{date}</h4>
+        <div className={styles.cardContainer}>
+            <div className={styles.headerDiv}>
+                <h1>{createdDate}</h1>
                 {
-                    !deleted ? <p onClick={() => {setDeleted(true)}}>X</p>
+                    !deleted ? <p id={styles.deleteIcon} onClick={() => {setDeleted(true)}}><MdDelete/></p>
                     :
                     <div>
                         <p>Delete?</p>
@@ -59,10 +67,20 @@ const RequestCard = ({ request, reloadPage, date }) => {
                     </div>
                 }
             </div>
-            <h3>{request.email}</h3>
-            <h3>{request.phone}</h3>
-            <p>{request.notes}</p>
-            {request.adminId ? <p>{request.admin.username}</p> : <button onClick={() => {contactHandler(request.id), reloadPage()}}>Contacted?</button>}
+            <h2>{request.name}</h2>
+            <span className={styles.infoContainer}>
+                <aside>
+                    <label htmlFor="email">Email:</label>
+                    <h3 name='email'>{request.email}</h3>
+                </aside>
+                <aside>
+                    <label htmlFor="phone">Phone #</label>
+                    <h3 name='phone'>{request.phone}</h3>
+                </aside>
+            </span>
+            <h3>Notes:</h3>
+            <p id={styles.notes}>{request.notes}</p>
+            {request.adminId ? <><p className={styles.admin}>Contacted by: {request.admin.username}</p><p className={styles.admin}>Contacted on: {contactedDate}</p></> : <button onClick={() => {contactHandler(request.id), reloadPage()}}>Contacted?</button>}
         </div>
     )
 }

@@ -19,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(https://www.earthdiver.com/cdn-cgi/image/width=2000,quality=75,format=auto/https://assets.earthdiver.com/media/media-2727684.jp?w=5246&h=2193&tick=1667491652923);
+    background-image: url('../assets/ElkPic.jpg');
     background-size: cover;
 }
 
@@ -39,6 +39,7 @@
     color: white;
     font-size: 3rem;
     text-align: center;
+    font-weight:bold;
 }
 
 .form{

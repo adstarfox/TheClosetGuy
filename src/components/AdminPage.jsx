@@ -37,9 +37,11 @@ const AdminPage = () => {
             return request.name.toLowerCase().includes(search.toLowerCase())}
         })
         .map((request, index) => {
-        const formattedDate = new Date(request.createdAt).toLocaleDateString('en-US');
+        const createdDate = new Date(request.createdAt).toLocaleDateString('en-US');
+        const contactedDate = new Date(request.updatedAt).toLocaleDateString('en-US');
+        
         return(
-            <RequestCard key={index} request={request} reloadPage={reloadPage} date={formattedDate} />
+            <RequestCard key={index} request={request} reloadPage={reloadPage} createdDate={createdDate} contactedDate={contactedDate} />
             )
         })
         
@@ -49,10 +51,15 @@ const AdminPage = () => {
         
     return (
         token ? 
-        <div>
-            <input onChange={e => setSearch(e.target.value)} type="text" name="" id="" placeholder='Search Name' />
-            <label>Contacted<input type="checkbox" onChange={(e) => {setChecked(!checked)}}/></label>
+        <div className={styles.pageBody}>
+            <div className={styles.searchBox}>
+                <label>Search
+                <input onChange={e => setSearch(e.target.value)} type="search" placeholder='Search Name' /></label>
+                <label>Contacted<input type="checkbox" onChange={(e) => {setChecked(!checked)}}/></label>
+            </div>
+            <span className={styles.requestContainer}>
             {filtered}
+            </span>
         </div> 
         : 
         <div>

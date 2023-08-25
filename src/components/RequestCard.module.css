@@ -1,0 +1,93 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+:root {
+    --primary-light-hsl: 200, 100%, 91%;
+    --primary-hsl: 200, 100%, 50%;
+    --primary-dark-hsl: 200, 100%, 6%;
+    --success-hsl: 100, 60%, 50%;
+    --error-hsl: 0, 60%, 50%;
+}
+
+.cardContainer{
+    height: 25rem;
+    width: 26rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    --color: hsl(var(--primary-dark-hsl), .8);
+    background-color: var(--color);
+    box-shadow: 0 0 0 1px hsl(var(--primary-hsl));
+    border-radius: .25em;
+    padding: .50rem;
+}
+
+.headerDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(250, 250, 250);
+    text-shadow: black 0px 0px 15px ;
+    font-weight: lighter;
+    padding-left: 5px;
+    /* margin-bottom: 5px; */
+}
+
+.headerDiv h1 {
+    font-size: x-large;
+}
+
+#deleteIcon svg{
+    height: 30px;
+    width: 30px
+}
+
+#deleteIcon:hover{
+    height: 100%;
+    background-color: hsla(0, 84%, 64%, 0.456);
+    box-shadow: 0 0 0 1px;
+    cursor: pointer;
+    color: red;
+}
+
+.cardContainer h2 {
+    color: rgb(0, 0, 0);
+    text-shadow: white 1px 1px 20px;
+    font-weight: lighter;
+    max-width: 100%;
+    overflow-wrap:break-word;
+    font-size: 3rem;
+    background-color: hsl(var(--primary-light-hsl), .4);
+    border-radius: .25em;
+}
+
+.infoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.infoContainer aside {
+    font-size: 1.25rem;
+    font-weight: lighter;
+    color: white;
+}
+
+.cardContainer h3{
+    font-size: 1.25rem;
+    font-weight: lighter;
+    color: white;
+}
+
+#notes{
+    background-color: white;
+    height: 10rem;
+    font-size: 1.5rem;
+}
+
+.admin{
+    color: wheat;
+}
