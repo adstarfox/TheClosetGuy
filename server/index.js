@@ -24,7 +24,7 @@ app.post('/login', adminLogin)
 
 app.get('/requests', isAuthenticated, getRequests)
 
-app.put('/contacted', isAuthenticated, markContacted)
+app.put('/contacted/:id', isAuthenticated, markContacted)
 
 app.delete('/admin-page/:id', isAuthenticated, deleteRequest)
 

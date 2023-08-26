@@ -15,6 +15,9 @@ module.exports = {
 
         try {
             token = jwt.verify(headerToken, SECRET)
+
+            req.body.username = token.username
+            // console.log(req.body)
         } catch (error) {
             error.statusCode = 500
             throw error

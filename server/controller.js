@@ -93,13 +93,15 @@ module.exports = {
         }
     },
     markContacted: async (req, res) => {
-        const {username, requestId} = req.body
+        const {username} = req.body
+        // console.log(req.params)
+        const {id} = req.params
         try {
             const adminId = await Admin.findOne({
                 where: {username:username}
             })
             await Request.update({adminId:adminId.id}, {
-                where: {id: requestId}
+                where: {id: id}
             })
             res.sendStatus(200)
         } catch (error) {

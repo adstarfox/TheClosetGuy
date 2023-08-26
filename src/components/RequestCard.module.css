@@ -53,12 +53,50 @@
     color: red;
 }
 
+.deleteContainer{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.deleteContainer svg {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+#yes{
+    color: green;
+}
+
+#yes:hover{
+    height: 100%;
+    background-color: hsla(0, 84%, 64%, 0.456);
+    box-shadow: 0 0 0 1px;
+    cursor: pointer;
+    color: green;
+}
+
+#no{
+    color: red;
+}
+
+#no:hover{
+    height: 100%;
+    background-color: hsla(113, 84%, 64%, 0.347);
+    box-shadow: 0 0 0 1px;
+    cursor: pointer;
+    color: red;
+}
+
 .cardContainer h2 {
     color: rgb(0, 0, 0);
     text-shadow: white 1px 1px 20px;
     font-weight: lighter;
     max-width: 100%;
-    overflow-wrap:break-word;
+    height: 3rem;
+    overflow:hidden;
     font-size: 3rem;
     background-color: hsl(var(--primary-light-hsl), .4);
     border-radius: .25em;
@@ -84,10 +122,37 @@
 
 #notes{
     background-color: white;
+    border-radius: .25rem;
     height: 10rem;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
     font-size: 1.5rem;
+    padding: .25rem;
+
 }
 
-.admin{
+#notes::-webkit-scrollbar{
+    display: none;
+}
+
+.btmBtn{
+    cursor: pointer;
+    height: 2rem;
+    width: 50%;
+    align-self: center;
+    border-radius: 1.25rem;
+    background-color: hsl(var(--primary-light-hsl),.9);
+}
+
+.btmBtn:active{
+    background-color: hsl(var(--primary-dark-hsl), .3);
+    color: white;
+}
+
+.bottom{
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     color: wheat;
 }
