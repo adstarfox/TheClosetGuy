@@ -128,12 +128,17 @@ const AdminPage = () => {
       <span className={styles.requestContainer}>{filtered}</span>
     </div>
   ) : (
-    <div>
-      <p>
-        Thanks for coming to our webpage. You are not authorized to be here.
-        Please click the button to go to our Home page
-      </p>
-      <button onClick={() => navigate("/")}>Home</button>
+    <div className={styles.catcherBody}>
+      <div className={styles.catcher}>
+        <p>
+          Thanks for coming to our webpage! You are not authorized to be here.
+          Please click the button to go to our Home page or Login
+        </p>
+        <span className={styles.btnContainer}>
+          <button onClick={() => navigate("/")}>Home</button>
+          <button onClick={() => navigate("/admin-login")}>Login</button>
+        </span>
+      </div>
     </div>
   );
 };

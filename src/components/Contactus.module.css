@@ -1,0 +1,22 @@
+.contactContainer{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoContainer{
+    width: 50%;
+    text-align: center;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+.formInputs{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

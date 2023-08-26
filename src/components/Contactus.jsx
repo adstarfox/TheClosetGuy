@@ -1,4 +1,4 @@
-import "./Contactus.css";
+import styles from "./Contactus.module.css";
 import { Formik } from "formik";
 import axios from 'axios'
 
@@ -21,10 +21,9 @@ const Contactus = () => {
   };
 
   return (
-    <div className="universal-body" id="contact-body">
-      <h1>Contact Us</h1>
-      <div id="contact-container">
-        <aside className="info-container" id="basic-info">
+    <div className={styles.contactContainer} id="contact-body">
+      {/* <h1>Contact Us</h1> */}
+        <aside className={styles.infoContainer} id="basic-info">
           <h1>Phone #</h1>
           <p>(111) 111-1111</p>
           <h1>Email</h1>
@@ -33,19 +32,19 @@ const Contactus = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {({ values, handleChange, handleSubmit }) => {
             return (
-              <form className="info-container" id="form">
-                <label className="form-inputs">
-                  Name
+              <form className={styles.infoContainer} id={styles.form}>
+                <div className={styles.formInputs}>
+                  <label>Name</label>
                   <input
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="Your Name Here"
                     name="name"
                     value={values.name}
                     onChange={handleChange}
                   />
-                </label>
-                <label className="form-inputs">
-                  Email
+                </div>
+                  <div className={styles.formInputs}>
+                  <label>Email</label>
                   <input
                     type="text"
                     placeholder="Example@email.com"
@@ -53,9 +52,9 @@ const Contactus = () => {
                     value={values.email}
                     onChange={handleChange}
                   />
-                </label>
-                <label className="form-inputs">
-                  Phone Number
+                </div>
+                <div className={styles.formInputs}>
+                  <label>Phone #</label>  
                   <input
                     type="number"
                     placeholder="(###) ###-####"
@@ -63,9 +62,9 @@ const Contactus = () => {
                     value={values.phone}
                     onChange={handleChange}
                   />
-                </label>
-                <label className="form-inputs">
-                  Notes
+                </div>
+                <div className={styles.formInputs}>
+                  <label>Notes</label>
                   <textarea
                     name="notes"
                     value={values.notes}
@@ -75,14 +74,13 @@ const Contactus = () => {
                     rows="10"
                     placeholder="Any additional information about your request?"
                   ></textarea>
-                </label>
+                </div>
                 <button type="button" id="submit-btn" onClick={handleSubmit}>Send</button>
               </form>
             );
           }}
         </Formik>
       </div>
-    </div>
   );
 };
 
