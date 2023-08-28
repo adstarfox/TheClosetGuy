@@ -59,6 +59,10 @@
     border: solid hsl(var(--color-hsl)) 5px ;
 }
 
+.active{
+    border: solid hsl(var(--color-hsl)) 5px ;
+}
+
 #logoutBtn{
     width: 200px;
     font-size: 1.5rem;

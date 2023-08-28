@@ -1,22 +1,123 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+#fakeHeader{
+    height: 150px;
+    width: 100vw;
+}
+
 .contactContainer{
-    height:100vh;
+    height:calc(100vh - 150px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.infoContainer{
+.sideContainers{
+    height: 100%;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    /* margin-top: 1rem; */
+}
+
+#basicInfo{
+    gap: 3rem;
+}
+
+#basicInfo h1{
+    font-weight: bold;
+    font-size: 3rem;
+    border-bottom: solid;
+}
+
+#basicInfo p{
+    font-size: 2rem;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #form{
+    width: 80%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    gap:1rem;
+    padding: 1.5rem 3rem 1.5rem 3rem;
+    background-color: hsl(179,100%,35%,.4);
+    box-shadow: 0 5px 20px -5px ;
+    border-radius: 1.25rem;
+    text-shadow:2px 2px 15px aquamarine;
+}
+
+#form h2{
+    font-size: 3.75rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+#form button{
+    padding: .5em 1em;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 1.25rem;
+    background-color: rgba(54, 251, 251, 0.556);
+    border: solid 1.5px ;
+}
+
+#form button:hover{
+    cursor: pointer;
+    background-color: rgba(54, 251, 251, 0.817);
 }
 
 .formInputs{
+    width: 100%;
+    font-size: 1.75rem;
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    font-weight: bolder;
+}
+
+#textarea label{
+    align-self: flex-start;
+}
+
+.formInputs input,
+.formInputs textarea{
+    width: 70%;
+    font-size: 1.75rem;
+    color: black;
+    border-radius: 1.25rem;
+    padding: .6rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 20px -10px ;
+}
+
+.formInputs input:focus,
+.formInputs textarea:focus{
+    box-shadow: 0 0 0 3px hsl(179,100%,35%,1);
+}
+
+.formInputs input::placeholder,
+.formInputs textarea::placeholder{
+    font-size: 1.5rem;
+    color: black;
+}
+
+.formInputs.error input{
+    box-shadow: 0 0 0 2px red;
 }

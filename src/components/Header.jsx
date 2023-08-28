@@ -18,9 +18,9 @@ const Header = () => {
             <img id={styles.hangerPic} src={hanger} alt="The Closet Guy Logo" onClick={()=>navigate('/')}/>
             {/* <h1 className={styles.headerTitle}>The Closet Guy</h1> */}
             {token ? <button id={styles.logoutBtn} onClick={logoutHandler}>Logout</button> : <nav className={styles.headerNav}>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/about-us'>About Us</NavLink>
-                <NavLink to='/contact-us'>Contact Us</NavLink>
+                <NavLink to='/' className={({isActive}) => (isActive ? styles.active : '')} >Home</NavLink>
+                <NavLink to='/about-us' className={({isActive}) => (isActive ? styles.active : '')}>About Us</NavLink>
+                <NavLink to='/contact-us' className={({isActive}) => (isActive ? styles.active : '')}>Contact Us</NavLink>
             </nav>} 
         </header>
     ) 

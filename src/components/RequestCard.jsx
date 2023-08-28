@@ -73,7 +73,7 @@ const RequestCard = ({ request, reloadPage, createdDate, contactedDate }) => {
                 reloadPage();
               }}
             >
-              <MdCheckroom/>
+              <MdCheckroom style={{transform: 'scaleX(-1)'}}/>
             </p>
             <p id={styles.no}
               onClick={() => {
