@@ -7,6 +7,7 @@ const Contactus = () => {
   const [nameValidation, setNameValidation] = useState(undefined)
   const [emailValidation, setEmailValidation] = useState(undefined)
   const [phoneValidation, setPhoneValidation] = useState(undefined)
+  const [submition, setSubmition] = useState(false)
 
   const initialValues = {
     name: "",
@@ -30,6 +31,7 @@ const Contactus = () => {
     axios.post('http://localhost:5050/quote', values)
         .then((res) => {
             console.log(res.data)
+            setSubmition(true)
         })
         .catch(err => console.log(err))
         
@@ -54,6 +56,7 @@ const Contactus = () => {
           {({ values, handleChange, handleSubmit }) => {
             return (
               <aside className={styles.sideContainers}>
+                {!submition ?
                 <form className={styles.formContainer} id={styles.form}>
                 <h2>Quote Request</h2>
                   <div className={`${styles.formInputs} ${nameValidation}`}>
@@ -103,6 +106,13 @@ const Contactus = () => {
                   </div>
                 <button type="button" id="submit-btn" onClick={handleSubmit}>Send Request</button>
                </form>
+               :
+               <div className={styles.formContainer} id={styles.thanks}>
+                <p>Thank you for your request!</p> 
+                <p>A member of our team will be reaching out soon.</p>
+              </div>
+                
+                }
               </aside>
             );
           }}

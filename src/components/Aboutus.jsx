@@ -1,5 +1,6 @@
 import styles from './Aboutus.module.css'
 import hanger from '../assets/grant-final-logo1.png'
+import ImageSlider from './ImageSlider'
 
 
 const Aboutus = () => {
@@ -12,24 +13,8 @@ const Aboutus = () => {
             Sequi amet numquam libero earum dolores est dolor laboriosam ratione, autem accusamus harum iusto quibusdam similique consectetur officiis? Obcaecati asperiores unde ducimus facilis ex illum in adipisci voluptate, labore quas!
             Quia laudantium assumenda necessitatibus nihil odit dignissimos voluptates odio quas impedit dolor architecto nisi repellendus corrupti distinctio, soluta quasi! Sit minima atque cumque illo debitis nostrum quasi? Unde, adipisci nemo.
             Officiis et nobis eos ab error, reprehenderit voluptatum adipisci nam molestiae neque, sed itaque tempora accusantium ullam tenetur magnam corrupti corporis fuga praesentium cum obcaecati expedita? Deleniti ullam sapiente eius?</p>
-            <h2>Example Pics</h2>
-            <span id={styles.example_container}>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-                <img src={hanger} alt="Example pictures" className='example-pics'/>
-            </span>
+            {/* <h2>Example Pics</h2> */}
+            <ImageSlider/>
         </div>
     )
 }

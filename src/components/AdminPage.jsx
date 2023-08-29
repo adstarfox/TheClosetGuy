@@ -24,7 +24,7 @@ const AdminPage = () => {
         },
       });
       setRequests(req.data);
-      // console.log(req.data)
+      console.log(req.data)
     } catch (err) {
       console.log(err);
     }
