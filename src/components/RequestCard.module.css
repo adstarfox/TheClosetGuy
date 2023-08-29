@@ -67,27 +67,28 @@
 }
 
 #yes{
-    color: green;
-}
-
-#yes:hover{
-    height: 100%;
-    background-color: hsla(0, 84%, 64%, 0.456);
-    box-shadow: 0 0 0 1px;
-    cursor: pointer;
-    color: green;
-}
-
-#no{
     color: red;
 }
 
-#no:hover{
+#yes:hover{
     height: 100%;
     background-color: hsla(113, 84%, 64%, 0.347);
     box-shadow: 0 0 0 1px;
     cursor: pointer;
     color: red;
+}
+
+#no{
+    color: green;
+}
+
+#no:hover{
+    height: 100%;
+    background-color: hsla(0, 84%, 64%, 0.456);
+    /* background-color: hsla(113, 84%, 64%, 0.347); */
+    box-shadow: 0 0 0 1px;
+    cursor: pointer;
+    color: green;
 }
 
 .cardContainer h2 {

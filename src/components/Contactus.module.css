@@ -119,5 +119,5 @@
 }
 
 .formInputs.error input{
-    box-shadow: 0 0 0 2px red;
+    box-shadow: 0 0 0 3px red;
 }

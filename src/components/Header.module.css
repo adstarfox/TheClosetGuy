@@ -57,10 +57,12 @@
 
 .headerNav a:hover{
     border: solid hsl(var(--color-hsl)) 5px ;
+    padding: 5px;
 }
 
 .active{
-    border: solid hsl(var(--color-hsl)) 5px ;
+    border-bottom: solid hsl(var(--color-hsl)) 5px ;
+    padding-bottom: 5px;
 }
 
 #logoutBtn{
