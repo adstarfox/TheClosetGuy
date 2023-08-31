@@ -39,16 +39,20 @@ const RequestCard = ({ request, reloadPage, createdDate, contactedDate }) => {
     }
   };
   // return str[0].toUpperCase() + str.slice(1)
-  let reqName = "";
+  let reqName = " ";
+  let name = request.name.split(" ");
   if (request.name.length > 15) {
-    let name = request.name.split(" ");
     reqName =
-      name[0][0].toUpperCase() +
-      name.slice(1) +
-      " " +
-      (name[1].substr(-1).toUpperCase() + ".");
+    (name[0][0].toUpperCase() +
+    name[0].slice(1) +
+    " " )+
+    (name[1][0].toUpperCase() + '.');
+    
   } else {
-    reqName = request.name;
+    reqName = (name[0][0].toUpperCase() +
+    name[0].slice(1)) +
+    " " + (name[1][0].toUpperCase() + name[1].slice(1));
+    // name.forEach((n) => n[0].toUpperCase() + n.slice(1))
   }
 
   return (
