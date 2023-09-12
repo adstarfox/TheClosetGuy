@@ -18,7 +18,7 @@ module.exports = {
             allowNull: true
         },
         phone: {
-            type: DataTypes.STRING({length: 11}),
+            type: DataTypes.STRING({length: 15}),
             allowNull: false
         },
         notes: {

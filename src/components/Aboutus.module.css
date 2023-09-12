@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: space-evenly;
     gap: 5rem;
+    overflow-x: hidden;
 }
 
 .about_us_body h1{
