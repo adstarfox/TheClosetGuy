@@ -1,13 +1,16 @@
 import styles from "./Contactus.module.css";
 import { Formik } from "formik";
 import axios from 'axios'
-import { useState } from 'react'
+import { useState,useRef } from 'react'
+import emailjs from 'emailjs-com'
 
 const Contactus = () => {
   const [nameValidation, setNameValidation] = useState(undefined)
   const [emailValidation, setEmailValidation] = useState(undefined)
   const [phoneValidation, setPhoneValidation] = useState(undefined)
   const [submition, setSubmition] = useState(false)
+
+  const form = useRef();
 
   const initialValues = {
     name: "",
@@ -17,6 +20,8 @@ const Contactus = () => {
   };
 
   const onSubmit = (values) => {
+    // const emailValues = values;
+
     const  phoneExp = /\(?(\d{3})\)?[.-\s]?(\d{3})[.-\s]?(\d{4})/.test(values.phone);
 
     const emailExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
@@ -34,6 +39,13 @@ const Contactus = () => {
             setSubmition(true)
         })
         .catch(err => console.log(err))
+
+    emailjs.sendForm('service_ln7a2fi', 'template_2qva2f5', form.current, 'nHOB_5yQ-KSoWQUTJ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
         
   };
 
@@ -57,7 +69,7 @@ const Contactus = () => {
             return (
               <aside className={styles.sideContainers}>
                 {!submition ?
-                <form className={styles.formContainer} id={styles.form}>
+                <form ref={form} className={styles.formContainer} id={styles.form}>
                 <h2>Quote Request</h2>
                   <div className={`${styles.formInputs} ${nameValidation}`}>
                     <label>Name</label>
