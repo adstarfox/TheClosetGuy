@@ -79,3 +79,9 @@
 #logoutBtn:hover{
     border: solid hsl(var(--color-hsl)) 5px ;
 }
+
+@media (max-width: 500px) {
+    .main{
+        color: blue;
+    }
+}
