@@ -12,6 +12,7 @@ const Header = () => {
     const logoutHandler = () => {
         localStorage.clear('adminToken')
         navigate('/admin-login')
+        //funny note
     }
     return(
         <header id={styles.header}>
