@@ -53,6 +53,7 @@
 
 @media (max-width: 500px) {
     .main{
-        color: blue;
+        color: green
+        ;
     }
 }
