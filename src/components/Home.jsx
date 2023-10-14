@@ -10,7 +10,7 @@ const Home = () => {
             {/* <h1 id={styles.home_title}>The Closet Guy</h1> */}
             <div id="first-container" className={styles.home_containers}>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro numquam provident officia consequatur voluptas nisi rem exercitationem eum ipsam ex maiores vitae quod voluptatibus velit eligendi iusto adipisci, neque pariatur?
-                Provident blanditiis quasi maxime error adipisci soluta, recusandae ullam ipsum eligendi cupiditate eius sequi vel, eveniet id illo vitae, doloribus corrupti saepe accusantium maiores molestiae molestias veniam.</p>
+                Provident blanditiis quasi maxime error adipisci, recusandae ullam ipsum eligendi cupiditate eius sequi vel, eveniet id illo vitae, doloribus corrupti saepe accusantium maiores molestiae molestias veniam.</p>
                 <img src={img3} alt="closet example 1" />
             </div>
             <span className={styles.middle}>
